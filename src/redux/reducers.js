@@ -42,6 +42,7 @@ const {
         return { ...state, pieces: shuffle(arr), userInput: payload.target.value, ordered: arr};
       case DROP:
         console.log(`============Handling Drop============`);
+        document.getElementById("puzzle__div").innerHTML = "";
         var indexOfFirst = state.pieces.indexOf(parseInt(payload.firstVal));
         var indexOfSecond = state.pieces.indexOf(parseInt(payload.secondVal));
         state.pieces[indexOfFirst] = parseInt(payload.secondVal);

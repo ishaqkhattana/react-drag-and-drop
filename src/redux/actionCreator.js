@@ -28,5 +28,5 @@ const elementDrop = ({firstVal, secondVal} ) => {
 
 export {
   initialize,
-  elementDrop
+  elementDrop,
 };
