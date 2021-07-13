@@ -1,5 +1,5 @@
 import { combineReducers } from "redux";
-import  puzzleReducer  from './reducers';
+import  puzzleReducer  from './puzzle/reducers';
 
 
 const rootReducers = combineReducers({

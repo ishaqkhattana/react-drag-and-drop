@@ -4,7 +4,7 @@ import {
   initialize,
   elementDrop,
   createGroups,
-} from "../../redux/actionCreator";
+} from "../../redux/puzzle/actionCreator";
 
 import { useDispatch, useSelector } from "react-redux";
 
