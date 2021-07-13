@@ -13,6 +13,7 @@
   }
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Encode+Sans+SC:wght@500&display=swap');
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -27,6 +28,17 @@
 .App-link {
   color: #61dafb;
 }
+
+body {
+  font-family: 'Encode Sans SC', sans-serif;
+  background: rgb(109,107,139);
+  background: linear-gradient(90deg, rgba(109,107,139,1) 0%, rgba(0,212,255,1) 100%); 
+}
+
+.puzzle__div {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
 
 @keyframes App-logo-spin {
   from {

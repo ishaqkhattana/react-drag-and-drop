@@ -1,9 +1,10 @@
 import React, { useEffect, useRef } from "react";
-import { Input, Card, Col, Row } from "antd";
-import { initialize } from "../../redux/actionCreator";
-import { elementDrop } from "../../redux/actionCreator";
-import { createGroups } from "../../redux/actionCreator";
-
+import { Input, Col, Row } from "antd";
+import {
+  initialize,
+  elementDrop,
+  createGroups,
+} from "../../redux/actionCreator";
 
 import { useDispatch, useSelector } from "react-redux";
 
@@ -17,6 +18,7 @@ function LandingPage() {
 
   useEffect(() => {
     var temporary = [];
+    //Splitting the 1D puzzle board into array of arrays wherein each array is a row, then dispatching to redux
     if (puzzle.userInput) {
       var tempPieces = [].concat(puzzle.pieces);
       while (tempPieces.length > 0) {
@@ -25,7 +27,6 @@ function LandingPage() {
       dispatch(createGroups(temporary));
     }
   }, [puzzle.userInput, puzzle.pieces]);
-  
 
   const handleDragStart = (e, element) => {
     e.dataTransfer.setData("text/plain", element);
@@ -44,7 +45,7 @@ function LandingPage() {
 
   return (
     <div>
-      <Row>
+      <Row style={{ marginTop: 200 }}>
         <Col span={10} offset={7}>
           <Input
             style={{ marginTop: "40" }}
@@ -54,22 +55,36 @@ function LandingPage() {
         </Col>
       </Row>
 
-      <div id="puzzle__div" style={{ marginLeft: 500 }}>
+      <div
+        id="puzzle__div"
+        style={{
+          marginTop: 50,
+          boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px",
+          width: "30%",
+          marginLeft: "auto",
+          marginRight: "auto",
+        }}
+      >
         {puzzle.groups.length
           ? puzzle.groups.map((group) => {
               return (
-                <Row>
-                  {console.log(puzzle.groups)}
-
+                <Row justify={"center"}>
                   {group.map((element) => (
                     <Col
                       draggable
                       onDragOver={(e) => e.preventDefault()}
                       onDragStart={(e) => handleDragStart(e, element)}
                       onDrop={(e) => handleDrop(e, element)}
-                      style={{ padding: 20 }}
+                      class="puzzle__cell"
+                      style={{
+                        padding: 20,
+                        margin: 10,
+                        background: "rgb(182,180,168)",
+                        background: "linear-gradient(90deg, rgba(182,180,168,1) 0%, rgba(145,145,141,1) 100%)",
+                        boxShadow: "rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px"
+                      }}
                     >
-                      {element}
+                      <p style = {{fontSize: '20px'}}>{element}</p>
                     </Col>
                   ))}
                 </Row>
