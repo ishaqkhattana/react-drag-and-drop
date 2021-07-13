@@ -1,6 +1,6 @@
 import actions from './actions';
 
-const { initializeArray, handleDrop} = actions;
+const { initializeArray, handleDrop, updateGroups} = actions;
 
 const initialize = value => {
     return async dispatch => {
@@ -26,7 +26,20 @@ const elementDrop = ({firstVal, secondVal} ) => {
   }
 }
 
+const createGroups = value => {
+  return async dispatch => {
+      try {
+        dispatch(updateGroups(value));
+      } catch (err) {
+        const error = new Error("Problem creating groups");
+        error.inner = err;
+        throw error;
+      }
+    };
+};
+
 export {
   initialize,
   elementDrop,
+  createGroups
 };

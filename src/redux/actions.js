@@ -1,6 +1,7 @@
 const actions = {
     INITIALIZE: "INITIALIZE",
     DROP: "DROP",
+    UPDATE_GROUPS: "UPDATE_GROUPS",
   
     initializeArray: data => {
       return {
@@ -15,6 +16,13 @@ const actions = {
         payload: data
       };
     },
+
+    updateGroups: data => {
+      return {
+        type: actions.UPDATE_GROUPS,
+        payload:data
+      }
+    }
   };
   
   export default actions;

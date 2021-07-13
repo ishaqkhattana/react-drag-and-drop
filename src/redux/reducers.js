@@ -2,7 +2,8 @@ import actions from './actions';
 
 const {
     INITIALIZE,
-    DROP
+    DROP,
+    UPDATE_GROUPS
   } = actions;
 
   const initialState = {
@@ -31,6 +32,7 @@ const {
     switch (type) {
       case INITIALIZE:
         console.log(`============INITIALZIING============`);
+        // document.getElementById("puzzle__div").innerHTML = "";
         var arr = [];
         var counter = 1;
         for (var i = 0; i < payload.target.value; i++) {
@@ -42,7 +44,7 @@ const {
         return { ...state, pieces: shuffle(arr), userInput: payload.target.value, ordered: arr};
       case DROP:
         console.log(`============Handling Drop============`);
-        document.getElementById("puzzle__div").innerHTML = "";
+        // document.getElementById("puzzle__div").innerHTML = "";
         var indexOfFirst = state.pieces.indexOf(parseInt(payload.firstVal));
         var indexOfSecond = state.pieces.indexOf(parseInt(payload.secondVal));
         state.pieces[indexOfFirst] = parseInt(payload.secondVal);
@@ -57,6 +59,8 @@ const {
           return { ...state,  pieces: tempArr, isFinalState:false};
 
         }
+      case UPDATE_GROUPS:
+        return { ...state,  groups: payload};
       default:
         return state;
     }
