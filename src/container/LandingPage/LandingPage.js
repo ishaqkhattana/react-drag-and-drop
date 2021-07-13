@@ -65,6 +65,7 @@ function LandingPage() {
           marginRight: "auto",
         }}
       >
+        {/* Rendered ONLY IF groups are made which means user has given an input, otherwise only input bar rendered */}
         {puzzle.groups.length
           ? puzzle.groups.map((group) => {
               return (
